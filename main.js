@@ -1,8 +1,8 @@
-const divContainer = document.querySelector("#container");
-const btn = document.createElement("button");
+const form = document.querySelector("#squareForm");
+const input = document.querySelector("#numOfSquares");
 
-for (let i = 0; i < 256; i++) {
-  const div = document.createElement("div");
-  div.classList.add("square");
-  divContainer.appendChild(div);
-}
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+  const value = input.value;
+  console.log(value); // Now this will correctly log the updated value
+});

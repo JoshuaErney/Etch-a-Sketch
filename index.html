@@ -12,8 +12,41 @@
 </head>
 
 <body>
-    <h1>Etch-a-Sketch Game</h1>
-    <div id="container"></div>
+    <div id="wrapper">
+        <header>
+            <p class="text">Magic</p>
+            <h2>Etch-A-Sketch</h2>
+            <p class="text">Screen</p>
+        </header>
+        <div id="container"></div>
+        <footer>
+            <button type="button" class="modern-button">Color options</button>
+            <button type="button" class="modern-button">Update Squares</button>
+            <button type="reset" class="modern-button">Reset surface</button>
+        </footer>
+    </div>
+
+    <dialog role="dialog">
+        <form method="dialog" id="squareForm">
+            <label for="numOfSquares">Set the Number of Squares</label>
+            <input type="number" name="numOfSquares" id="numOfSquares" required value="25" min="1" max="100">
+            <button type="reset" id="cancelBtn">Cancel</button>
+            <button type="submit" id="submitSquaresBtn" formmethod="dialog">Submit</button>
+            <!-- the returnValue property (of the dialog/form submit) gets set to the value of the button that was activated. -->
+        </form>
+    </dialog>
+
+    <dialog role="dialog">
+        <form method="dialog">
+            <label for="colorOptions">Color Select</label>
+            <select name="colorOptions" id="colorOptions">
+                <option value="rainbow">Rainbow</option>
+                <option value="black">Black</option>
+                <option value="random">Random</option>
+            </select>
+            <button type="submit" formmethod="dialog" id="submitSquaresBtn">Submit</button>
+        </form>
+    </dialog>
 
     <script src="main.js"></script>
 </body>
