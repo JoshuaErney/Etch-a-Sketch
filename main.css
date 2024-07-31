@@ -19,8 +19,6 @@ footer {
 
 p.text {
   font-size: 24px;
-  text-decoration: underline;
-  text-underline-offset: 0.725rem;
 }
 
 .modern-button {
@@ -61,8 +59,10 @@ div#container {
   height: 550px;
   background: #fff;
   display: flex;
+  flex-wrap: wrap;
 }
 
 div.square {
-  flex: 1;
+  flex-grow: 1;
+  border: 1px solid #000;
 }
