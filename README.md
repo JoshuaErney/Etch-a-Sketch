@@ -66,3 +66,13 @@ See also the list of [contributors](http://www.link.com) who participated in thi
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
+
+I was having a hard time figuring out how i should build this with flexbox since all the times i used flexbox, in my testing, the boxes would always not stretch properly on the last row.
+
+I decided to go to Youtube to try and look at what other people did and then I watched a video by "Self Taught Dev" who showed how when he used Flexbox, he used botht he column layout and the row layout to make the grid.
+
+Video link: [The Odin Project - Foundations Etch-a-Sketch](https://www.youtube.com/watch?v=Ydw9HmoLggM)
+
+GitHub Project by kasugaijin [GitHub - Etch-a-Sketch](https://github.com/kasugaijin/etch-a-sketch/tree/main)
+
+So I must give props to him for helping me solve a problem I was having honestly having a hard time solving with just Flexbox.

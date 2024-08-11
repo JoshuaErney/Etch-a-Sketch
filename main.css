@@ -1,6 +1,5 @@
 body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -44,7 +43,7 @@ p.text {
   color: #fff;
 }
 
-div#wrapper {
+div#canvas {
   background-color: #a4031f;
   border-radius: 20px;
   padding: 1rem 2rem;
@@ -55,12 +54,6 @@ div#container {
   height: 550px;
   background: #fff;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  align-content: stretch;
   overflow: hidden;
-}
-
-div.square {
-  flex-grow: 1;
-  border: 1px solid #000;
 }

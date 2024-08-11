@@ -15,7 +15,7 @@ squareForm.addEventListener("submit", (e) => {
   squareForm.querySelector(`input[type="number"]`);
   let numValue = input.value;
   dialogUpdate.close();
-  return numValue;
+  return createGrid();
 });
 
 colorForm.addEventListener("submit", (e) => {
@@ -38,6 +38,11 @@ btnColorSelect.addEventListener("click", () => {
 // Closes the Update dialog (via the cancel button)
 btnFormCancel.addEventListener("click", () => {
   dialogUpdate.close();
+});
+
+// Closes the Color dialog (via the cancel button)
+btnColorSelect.addEventListener("click", () => {
+  dialogColor.show();
 });
 
 /* ------------------------------------------------------ */
@@ -118,12 +123,12 @@ function generateGreyToBlackColors(steps) {
   return colors;
 }
 
-const greyToBlackColors = generateGreyToBlackColors(10);
+// const greyToBlackColors = generateGreyToBlackColors(10);
 
 /* ------------------------------------------------------ */
 
-function createGrid(params) {
-  for (let i = 0; i <= 256; i++) {}
+function createGrid() {
+  const container = document.querySelector("#container");
 }
 
 function clearGrid(params) {}
