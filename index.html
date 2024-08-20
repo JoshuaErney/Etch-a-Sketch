@@ -30,10 +30,12 @@
 
     <dialog role="dialog" id="dialogUpdate">
         <form method="dialog" id="squareForm">
-            <label for="numOfSquares">Set the Number of Squares</label>
+            <label for="numOfSquares">Set the Grid</label>
             <input type="number" name="numOfSquares" id="numOfSquares" required value="" min="1" max="100">
-            <button type="reset" id="cancelBtn">Cancel</button>
-            <button type="submit" id="submitSquaresBtn" formmethod="dialog">Submit</button>
+            <div class="button-container">
+                <button type="submit" id="submitSquaresBtn" formmethod="dialog">Submit</button>
+                <button type="reset" id="cancelBtn">Cancel</button>
+            </div>
         </form>
     </dialog>
 
@@ -46,8 +48,10 @@
                 <option value="random">Random</option>
                 <option value="grey">Grey to Black</option>
             </select>
-            <button type="submit" formmethod="dialog" id="submitColorBtn">Submit</button>
-            <button type="reset" id="resetBtn">Reset</button>
+            <div class="button-container">
+                <button type="submit" formmethod="dialog" id="submitColorBtn">Submit</button>
+                <button type="reset" id="resetBtn">Reset</button>
+            </div>
         </form>
     </dialog>
     <script src="main.js"></script>

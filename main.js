@@ -10,20 +10,24 @@ const btnColorSelect = document.querySelector("#color-select-btn");
 const dialogUpdate = document.querySelector("#dialogUpdate");
 const dialogColor = document.querySelector("#dialogColor");
 
+/* ------------------------------------------------------ */
+
 squareForm.addEventListener("submit", (e) => {
   e.preventDefault();
   squareForm.querySelector(`input[type="number"]`);
   let numValue = input.value;
   dialogUpdate.close();
-  return createGrid();
+  return createGrid(numValue, numValue);
 });
 
 colorForm.addEventListener("submit", (e) => {
   const selectElement = colorForm.querySelector("select");
   const colorValue = selectElement.value;
   dialogUpdate.close();
-  return colorValue;
+  colorOptions(colorValue);
 });
+
+/* ------------------------------------------------------ */
 
 // Opens the Update dialog
 btnUpdateSquares.addEventListener("click", () => {
@@ -103,7 +107,7 @@ function getNextColor() {
   return color;
 }
 
-function generateGreyToBlackColors(steps) {
+function grayToBlack(steps) {
   const colors = [];
   const startColor = [128, 128, 128]; // Grey
   const endColor = [0, 0, 0]; // Black
@@ -123,16 +127,17 @@ function generateGreyToBlackColors(steps) {
   return colors;
 }
 
-// const greyToBlackColors = generateGreyToBlackColors(10);
+// const greyToBlackColors = grayToBlack(10);
 
 /* ------------------------------------------------------ */
 
-function createGrid() {
+function createGrid(column, row) {
   const container = document.querySelector("#container");
+  for (let num = 0; num < 256; num++) {}
 }
 
 function clearGrid(params) {}
 
-function colorOptions(params) {}
+function colorOptions(colorValue) {}
 
 function resetSurface(params) {}
