@@ -4,42 +4,20 @@ Building the old time game known as "Etch-a-Sketch".
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
 ### Instructions
 
 - [x] Create a div container (HTML file)
-- [x] Use Flexbox for ordering the 256 divs (bon't use border or margin styling)
+- [x] Use Flexbox for ordering the divs (bon't use border or margin styling)
 - [ ] Add a hover effect (change color) for all 256 divs
 - [x] Create button that asks for number of squares per side (user input max = 100)
-  - [ ] a popup screen/box will appear
-  - [ ] the old grid will be removed
-  - [ ] the new grid will be added.
-  - [ ] Research button tags that can be used in conjuntion with JS Functions
+  - [x] a popup screen/box will appear
+  - [x] the old grid will be removed
+  - [x] the new grid will be added.
+  - [x] Research button tags that can be used in conjuntion with JS Functions
 
 #### Goal
 
-You should be able to enter 64 and have a brand new 64x64 grid pop up without changing the total amount of pixels used.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-### Installing
-
-A step-by-step series of examples that tell you how to get a development environment running
-
-## Running the Tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end-to-end tests
-
-Explain what these tests test and why
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+Create a functional, web-based drawing application that mimics the classic Etch-a-Sketch toy. Users should be able to create/adjust the grid size dynamically. They then will be able to "draw" on the grid by hovering their mouse over the squares. Additionally, users have the ability to clear the grid and change the color of the squares, when hovered over, by selecting a different color option.
 
 ## Built With
 
@@ -47,32 +25,14 @@ Add additional notes about how to deploy this on a live system
 - [CSS](http://www.link.com) - Provided the tools to style everything
 - [JavaScript](http://www.link.com) - Provided ability to add dynamic content and functionality.
 
-## Contributing
-
-Please read [CONTRIBUTING.md](http://www.link.com) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [Git](https://git-scm.com/) for versioning. For the versions available, see the [tags on this repository](http://www.link.com).
-
 ## Authors
 
 - **Joshua Erney** - _Initial work_ - [JoshuaErney](https://github.com/YourUsername)
 
-See also the list of [contributors](http://www.link.com) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
-I was having a hard time figuring out how i should build this with flexbox since all the times i used flexbox, in my testing, the boxes would always not stretch properly on the last row.
+1. I initially faced challenges in implementing Flexbox for this project, particularly with ensuring that the boxes stretched properly in the last row. After several attempts, I decided to seek out additional resources and came across a tutorial by "Self Taught Dev" on YouTube. The video demonstrated an effective approach using both column and row layouts with Flexbox to achieve a functional grid, which greatly assisted in resolving the issues I encountered.
 
-I decided to go to Youtube to try and look at what other people did and then I watched a video by "Self Taught Dev" who showed how when he used Flexbox, he used botht he column layout and the row layout to make the grid.
+- Video link: [The Odin Project - Foundations Etch-a-Sketch](https://www.youtube.com/watch?v=Ydw9HmoLggM)
 
-Video link: [The Odin Project - Foundations Etch-a-Sketch](https://www.youtube.com/watch?v=Ydw9HmoLggM)
-
-GitHub Project by kasugaijin [GitHub - Etch-a-Sketch](https://github.com/kasugaijin/etch-a-sketch/tree/main)
-
-So I must give props to him for helping me solve a problem I was having honestly having a hard time solving with just Flexbox.
+- GitHub Project by kasugaijin [GitHub - Etch-a-Sketch](https://github.com/kasugaijin/etch-a-sketch/tree/main)

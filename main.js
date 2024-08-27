@@ -1,5 +1,7 @@
 const squareForm = document.querySelector("#squareForm");
 const colorForm = document.querySelector("#colorForm");
+const resetBtn = document.querySelector("#reset-grid");
+const container = document.querySelector("#container");
 
 const input = document.querySelector("#numOfSquares");
 const btnFormCancel = document.querySelector("#cancelBtn");
@@ -24,8 +26,10 @@ colorForm.addEventListener("submit", (e) => {
   const selectElement = colorForm.querySelector("select");
   const colorValue = selectElement.value;
   dialogUpdate.close();
-  colorOptions(colorValue);
+  return colorOptions(colorValue);
 });
+
+resetBtn.addEventListener("click", (e) => {});
 
 /* ------------------------------------------------------ */
 
@@ -51,15 +55,33 @@ btnColorSelect.addEventListener("click", () => {
 
 /* ------------------------------------------------------ */
 
+function createGrid(columns, rows) {
+  clearGrid();
+  for (let i = 0; i < columns; i++) {
+    const columnDiv = document.createElement("div");
+    columnDiv.classList.add("column");
+    for (let k = 0; k < rows; k++) {
+      const rowDiv = document.createElement("div");
+      rowDiv.classList.add("row");
+      columnDiv.appendChild(rowDiv);
+    }
+    container.appendChild(columnDiv);
+  }
+}
+
+function clearGrid() {
+  container.innerHTML = "";
+}
+
 function getRandomNum() {
   let num = Math.floor(Math.random() * 256);
   return num;
 }
 
 function getRandomColor() {
-  const r = getRandomInt();
-  const g = getRandomInt();
-  const b = getRandomInt();
+  const r = getRandomNum();
+  const g = getRandomNum();
+  const b = getRandomNum();
   return `rgb(${r}, ${g}, ${b})`;
 }
 
@@ -107,7 +129,7 @@ function getNextColor() {
   return color;
 }
 
-function grayToBlack(steps) {
+function greyToBlack(steps) {
   const colors = [];
   const startColor = [128, 128, 128]; // Grey
   const endColor = [0, 0, 0]; // Black
@@ -127,17 +149,35 @@ function grayToBlack(steps) {
   return colors;
 }
 
-// const greyToBlackColors = grayToBlack(10);
-
-/* ------------------------------------------------------ */
-
-function createGrid(column, row) {
-  const container = document.querySelector("#container");
-  for (let num = 0; num < 256; num++) {}
+function colorOptions(colorValue) {
+  // Select the row elements dynamically each time the function is called
+  const squareBoxes = document.querySelectorAll(".column .row");
+  if (colorValue === "black") {
+    squareBoxes.forEach((box) => {
+      box.addEventListener("mouseover", function () {
+        box.style.backgroundColor = "#000";
+      });
+    });
+  } else if (colorValue === "random") {
+    squareBoxes.forEach((box) => {
+      box.addEventListener("mouseover", function () {
+        box.style.backgroundColor = getRandomColor();
+      });
+    });
+  } else if (colorValue === "grey") {
+    const colors = greyToBlack(10);
+    squareBoxes.forEach((box) => {
+      let colorIndex = 0;
+      box.addEventListener("mouseover", function () {
+        box.style.backgroundColor = colors[colorIndex];
+        colorIndex = (colorIndex + 1) % colors.length; // Cycle through colors
+      });
+    });
+  } else if (colorValue === "rainbow") {
+    squareBoxes.forEach((box) => {
+      box.addEventListener("mouseover", function () {
+        box.style.backgroundColor = getNextColor();
+      });
+    });
+  }
 }
-
-function clearGrid(params) {}
-
-function colorOptions(colorValue) {}
-
-function resetSurface(params) {}

@@ -22,16 +22,16 @@
         <div id="container"></div>
 
         <footer>
-            <button type="button" class="modern-button" id="color-select-btn">Color options</button>
-            <button type="button" class="modern-button" id="update-squares-btn">Update Squares</button>
-            <button type="reset" class="modern-button">Reset surface</button>
+            <button type="button" class="modern-button" id="color-select-btn">Set Grid Color</button>
+            <button type="button" class="modern-button" id="update-squares-btn">Set Grid Size</button>
+            <button type="button" class="modern-button" id="reset-grid">Reset Grid</button>
         </footer>
     </div>
 
     <dialog role="dialog" id="dialogUpdate">
         <form method="dialog" id="squareForm">
             <label for="numOfSquares">Set the Grid</label>
-            <input type="number" name="numOfSquares" id="numOfSquares" required value="" min="1" max="100">
+            <input type="number" name="numOfSquares" id="numOfSquares" required value="" min="10" max="90">
             <div class="button-container">
                 <button type="submit" id="submitSquaresBtn" formmethod="dialog">Submit</button>
                 <button type="reset" id="cancelBtn">Cancel</button>
@@ -54,7 +54,7 @@
             </div>
         </form>
     </dialog>
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
 </body>
 
 </html>
