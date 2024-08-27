@@ -1,3 +1,4 @@
+// Select necessary DOM elements
 const squareForm = document.querySelector("#squareForm");
 const colorForm = document.querySelector("#colorForm");
 const resetBtn = document.querySelector("#reset-grid");
@@ -14,49 +15,48 @@ const dialogColor = document.querySelector("#dialogColor");
 
 /* ------------------------------------------------------ */
 
+// Event listener for creating the grid based on user input
 squareForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  squareForm.querySelector(`input[type="number"]`);
-  let numValue = input.value;
+  const numValue = input.value;
   dialogUpdate.close();
-  return createGrid(numValue, numValue);
+  createGrid(numValue, numValue);
 });
 
+// Event listener for applying the selected color option
 colorForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   const selectElement = colorForm.querySelector("select");
   const colorValue = selectElement.value;
-  dialogUpdate.close();
-  return colorOptions(colorValue);
+  dialogColor.close();
+  colorOptions(colorValue);
 });
 
-resetBtn.addEventListener("click", (e) => {});
+// Event listener for clearing the entire grid
+resetBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  clearGrid();
+  createGrid(24, 24);
+});
 
-/* ------------------------------------------------------ */
-
-// Opens the Update dialog
+// Event listeners for opening and closing dialogs
 btnUpdateSquares.addEventListener("click", () => {
   dialogUpdate.show();
 });
 
-// Opens the Color dialog
 btnColorSelect.addEventListener("click", () => {
   dialogColor.show();
 });
 
-// Closes the Update dialog (via the cancel button)
 btnFormCancel.addEventListener("click", () => {
   dialogUpdate.close();
 });
 
-// Closes the Color dialog (via the cancel button)
-btnColorSelect.addEventListener("click", () => {
-  dialogColor.show();
-});
-
 /* ------------------------------------------------------ */
 
+// Function to create a grid with the specified number of columns and rows
 function createGrid(columns, rows) {
-  clearGrid();
+  clearGrid(); // Clear any existing grid before creating a new one
   for (let i = 0; i < columns; i++) {
     const columnDiv = document.createElement("div");
     columnDiv.classList.add("column");
@@ -69,15 +69,17 @@ function createGrid(columns, rows) {
   }
 }
 
+// Function to clear the grid container
 function clearGrid() {
   container.innerHTML = "";
 }
 
+// Function to generate a random RGB value
 function getRandomNum() {
-  let num = Math.floor(Math.random() * 256);
-  return num;
+  return Math.floor(Math.random() * 256);
 }
 
+// Function to create a random color in RGB format
 function getRandomColor() {
   const r = getRandomNum();
   const g = getRandomNum();
@@ -85,6 +87,7 @@ function getRandomColor() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
+// Function to return the RGB value for a given color name in the rainbow sequence
 function createRainbowColors(colorName) {
   const colors = {
     Red: `rgb(255, 0, 0)`,
@@ -103,7 +106,7 @@ function createRainbowColors(colorName) {
   return colors[colorName];
 }
 
-// Array of color names
+// Array of rainbow color names
 const colorNames = [
   "Red",
   "RedOrange",
@@ -119,9 +122,9 @@ const colorNames = [
   "Magenta",
 ];
 
-let currentColorIndex = 0;
+let currentColorIndex = 0; // Keeps track of the current color in the rainbow cycle
 
-// Function to get the next color in the cycle
+// Function to get the next color in the rainbow cycle
 function getNextColor() {
   const colorName = colorNames[currentColorIndex];
   const color = createRainbowColors(colorName);
@@ -129,6 +132,7 @@ function getNextColor() {
   return color;
 }
 
+// Function to generate an array of colors transitioning from grey to black
 function greyToBlack(steps) {
   const colors = [];
   const startColor = [128, 128, 128]; // Grey
@@ -149,35 +153,57 @@ function greyToBlack(steps) {
   return colors;
 }
 
+// Function to apply the selected color option to the grid
+// Function to apply a color to each square on hover
+function applyColorOnHover(squareBoxes, getColorFunction) {
+  squareBoxes.forEach((box) => {
+    box.addEventListener("mouseover", () => {
+      box.style.backgroundColor = getColorFunction();
+    });
+  });
+}
+
+// Specific color application functions
+function applyBlackColor(squareBoxes) {
+  applyColorOnHover(squareBoxes, () => "#000");
+}
+
+function applyRandomColor(squareBoxes) {
+  applyColorOnHover(squareBoxes, getRandomColor);
+}
+
+function applyGreyToBlack(squareBoxes) {
+  const colors = greyToBlack(10);
+  let colorIndex = 0;
+  applyColorOnHover(squareBoxes, () => {
+    const color = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+    return color;
+  });
+}
+
+function applyRainbowColors(squareBoxes) {
+  applyColorOnHover(squareBoxes, getNextColor);
+}
+
+// Function to handle color options
 function colorOptions(colorValue) {
-  // Select the row elements dynamically each time the function is called
   const squareBoxes = document.querySelectorAll(".column .row");
-  if (colorValue === "black") {
-    squareBoxes.forEach((box) => {
-      box.addEventListener("mouseover", function () {
-        box.style.backgroundColor = "#000";
-      });
-    });
-  } else if (colorValue === "random") {
-    squareBoxes.forEach((box) => {
-      box.addEventListener("mouseover", function () {
-        box.style.backgroundColor = getRandomColor();
-      });
-    });
-  } else if (colorValue === "grey") {
-    const colors = greyToBlack(10);
-    squareBoxes.forEach((box) => {
-      let colorIndex = 0;
-      box.addEventListener("mouseover", function () {
-        box.style.backgroundColor = colors[colorIndex];
-        colorIndex = (colorIndex + 1) % colors.length; // Cycle through colors
-      });
-    });
-  } else if (colorValue === "rainbow") {
-    squareBoxes.forEach((box) => {
-      box.addEventListener("mouseover", function () {
-        box.style.backgroundColor = getNextColor();
-      });
-    });
+
+  switch (colorValue) {
+    case "black":
+      applyBlackColor(squareBoxes);
+      break;
+    case "random":
+      applyRandomColor(squareBoxes);
+      break;
+    case "grey":
+      applyGreyToBlack(squareBoxes);
+      break;
+    case "rainbow":
+      applyRainbowColors(squareBoxes);
+      break;
+    default:
+      console.log("Invalid color option");
   }
 }
