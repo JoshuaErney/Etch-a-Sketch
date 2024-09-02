@@ -1,4 +1,4 @@
-// Select necessary DOM elements
+// Select necessary Document Object Model (DOM) elements
 const squareForm = document.querySelector("#squareForm");
 const colorForm = document.querySelector("#colorForm");
 const resetBtn = document.querySelector("#reset-grid");

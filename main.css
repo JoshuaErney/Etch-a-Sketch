@@ -39,13 +39,13 @@ div#container {
 }
 
 div.row {
-  border: 0.5px solid black;
+  border: 0.5px solid lightgray;
   display: flex;
   flex: 1;
 }
 
 div.column {
-  border: 0.5px solid black;
+  border: 0.5px solid lightgray;
   display: flex;
   flex: 1;
 }
